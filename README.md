@@ -33,7 +33,34 @@ docker run --network=host docker-flink:1.15.0.0 jobmanger
 docker run --network=host docker-flink:1.15.0.0 taskmanager
 ```
 
-run first example
+run first example from your local system
 ```bash
- /mnt/c/Local2/code/virtualization/flink/flink-1.15.0/bin/flink run  -py word_count.py
+cd  /mnt/c/Local2/code/virtualization/flink/flink-1.15.0/examples/python/table
+/mnt/c/Local2/code/virtualization/flink/flink-1.15.0/bin/flink run  -py word_count.py
  ```
+
+run first example from docker container
+---------------------------------------
+connect to the jobmanager
+```bash
+docker ps 
+docker exec -it <container id> bash
+cd /opt/flink/examples/python/table
+/opt/flink/bin/flink run  -py word_count.py
+```
+will produce something like 
+```
+root@DESKTOP-9S5UVM3:/opt/flink/examples/python/table# /opt/flink/bin/flink run  -py word_count.py
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.flink.api.java.ClosureCleaner (file:/opt/flink/lib/flink-dist-1.15.1.jar) to field java.lang.String.value
+WARNING: Please consider reporting this to the maintainers of org.apache.flink.api.java.ClosureCleaner
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Job has been submitted with JobID 4fa41a22e8c5fa3616ff3b900754770c
+Executing word_count example with default input data set.
+Use --input to specify file input.
+Printing result to stdout. Use --output to specify output path.
+```
+
+Access jobmanager
+http://[::1]:8081/

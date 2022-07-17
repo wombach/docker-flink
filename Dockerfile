@@ -22,8 +22,10 @@ RUN apt-get update -y &&\
     apt-get install -y net-tools &&\
     apt-get install -y git && \
     # only used for devlopment
-    apt-get install -y vim && \ 
-    mkdir /opt/flink/py_libs && \
+    apt-get install -y vim
+
+USER flink
+RUN mkdir /opt/flink/py_libs && \
     cd /opt/flink/py_libs && \
     git clone --single-branch https://github.com/wombach/m4i-flink-tasks.git && \
     wget https://dlcdn.apache.org/flink/flink-1.15.1/python/apache-flink-1.15.1.tar.gz && \
@@ -31,6 +33,7 @@ RUN apt-get update -y &&\
     pip3 install ./apache-flink-libraries*.tar.gz && pip3 install ./apache-flink*.tar.gz
 
 # install required jar files
+USER flink
 RUN mkdir /opt/flink/jars && \
     cd /opt/flink/jars/ && \
     wget https://repo.maven.apache.org/maven2/org/apache/flink/flink-connector-kafka/1.15.1/flink-connector-kafka-1.15.1.jar && \

@@ -18,10 +18,22 @@ RUN apt-get update -y && \
     rm -rf /var/lib/apt/lists/*
 
 # install PyFlink
-RUN apt update -y &&\
-    apt install -y net-tools &&\
+RUN apt-get update -y &&\
+    apt-get install -y net-tools &&\
+    apt-get install -y git && \
+    # only used for devlopment
+    apt-get install -y vim && \ 
+    mkdir /opt/flink/py_libs && \
+    cd /opt/flink/py_libs && \
+    git clone --single-branch https://github.com/wombach/m4i-flink-tasks.git && \
     wget https://dlcdn.apache.org/flink/flink-1.15.1/python/apache-flink-1.15.1.tar.gz && \
     wget https://dlcdn.apache.org/flink/flink-1.15.1/python/apache-flink-libraries-1.15.1.tar.gz && \
     pip3 install ./apache-flink-libraries*.tar.gz && pip3 install ./apache-flink*.tar.gz
-#COPY apache-flink*.tar.gz /
-#RUN pip3 install /apache-flink-libraries*.tar.gz && pip3 install /apache-flink*.tar.gz
+
+# install required jar files
+RUN mkdir /opt/flink/jars && \
+    cd /opt/flink/jars/ && \
+    wget https://repo.maven.apache.org/maven2/org/apache/flink/flink-connector-kafka/1.15.1/flink-connector-kafka-1.15.1.jar && \
+    wget https://repo.maven.apache.org/maven2/org/apache/kafka/kafka-clients/2.2.1/kafka-clients-2.2.1.jar
+
+

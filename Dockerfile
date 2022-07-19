@@ -34,8 +34,8 @@ RUN mkdir /opt/flink/py_libs && \
 
 # install required jar files
 USER flink
-RUN mkdir /opt/flink/jars && \
-    cd /opt/flink/jars/ && \
+RUN mkdir /opt/flink/py_libs/m4i-flink-tasks/flink_jars && \
+    cd  /opt/flink/py_libs/m4i-flink-tasks/flink_jars && \
     wget https://repo.maven.apache.org/maven2/org/apache/flink/flink-connector-kafka/1.15.1/flink-connector-kafka-1.15.1.jar && \
     wget https://repo.maven.apache.org/maven2/org/apache/kafka/kafka-clients/2.2.1/kafka-clients-2.2.1.jar
 

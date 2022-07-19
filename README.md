@@ -20,7 +20,7 @@ for debugging check the log file
 docker exec -it <container id> /bin/bash
 
 publish the image to docker hub
-docker push wombach/docker-flink:1.15.0.0
+docker push wombach/docker-flink:1.15.1.0
 
 docker tag a1a6377f55bd wombach/docker-flink:1.15.1.0
 docker push wombach/docker-flink:1.15.1.0

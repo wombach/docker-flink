@@ -27,16 +27,15 @@ RUN apt-get update -y &&\
 USER flink
 RUN mkdir /opt/flink/py_libs && \
     cd /opt/flink/py_libs && \
-    git clone --single-branch https://github.com/wombach/m4i-flink-tasks.git && \
+    git clone --single-branch https://github.com/aureliusenterprise/m4i-flink-tasks.git && \
     wget https://dlcdn.apache.org/flink/flink-1.15.1/python/apache-flink-1.15.1.tar.gz && \
     wget https://dlcdn.apache.org/flink/flink-1.15.1/python/apache-flink-libraries-1.15.1.tar.gz && \
     pip3 install ./apache-flink-libraries*.tar.gz && pip3 install ./apache-flink*.tar.gz
 
 # install required jar files
 USER flink
-RUN mkdir /opt/flink/py_libs/m4i-flink-tasks/flink_jars && \
-    cd  /opt/flink/py_libs/m4i-flink-tasks/flink_jars && \
+RUN cd  /opt/flink/py_libs/m4i-flink-tasks/flink_jars && \
     wget https://repo.maven.apache.org/maven2/org/apache/flink/flink-connector-kafka/1.15.1/flink-connector-kafka-1.15.1.jar && \
     wget https://repo.maven.apache.org/maven2/org/apache/kafka/kafka-clients/2.2.1/kafka-clients-2.2.1.jar
 
-
+COPY ./bin/ /opt/flink/init/

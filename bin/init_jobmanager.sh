@@ -10,6 +10,7 @@ sed "s/ELASTIC_PASSWORD/${ELASTIC_PASSWORD}/g" /opt/flink/py_libs/m4i-flink-task
 
 # instakll m4i-flink-task library
 cd /opt/flink/py_libs/m4i-flink-tasks
+git pull
 pip3 install -e .  >> /tmp/log.out
 
 # setup the atlas related default users
@@ -25,7 +26,8 @@ python init-app-search-engines.py  >> /tmp/log.out
 # python init-atlas-m4i-types.py
 
 # upload sample data and the related type definitions
-#./upload_sample_data
+chmod +x upload_sample_data.sh
+./upload_sample_data.sh
 
 # start flink jobs
 # cd /opt/flink/py_libs/m4i-flink-tasks/scripts 

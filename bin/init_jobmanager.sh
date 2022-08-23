@@ -26,11 +26,11 @@ python init-app-search-engines.py  >> /tmp/log.out
 # python init-atlas-m4i-types.py
 
 # start flink jobs
-cd /opt/flink/py_libs/m4i-flink-tasks/scripts 
-/opt/flink/bin/flink run -d -py get_entity_job.py >> /tmp/log.out
-/opt/flink/bin/flink run -d -py publish_state_job.py >> /tmp/log.out
-/opt/flink/bin/flink run -d -py determine_change_job.py >> /tmp/log.out
+#cd /opt/flink/py_libs/m4i-flink-tasks/scripts 
+#/opt/flink/bin/flink run -d -py get_entity_job.py >> /tmp/log.out
+#/opt/flink/bin/flink run -d -py publish_state_job.py >> /tmp/log.out
+#/opt/flink/bin/flink run -d -py determine_change_job.py >> /tmp/log.out
 
 # upload sample data and the related type definitions
-chmod +x upload_sample_data.sh
-./upload_sample_data.sh
+#chmod +x upload_sample_data.sh
+#./upload_sample_data.sh

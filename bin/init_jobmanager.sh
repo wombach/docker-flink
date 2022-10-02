@@ -23,7 +23,7 @@ python create_keycloak_users.py -u scientist -p KEYCLOAK_ATLAS_USER_PASSWORD -r 
 cd /opt/flink/py_libs/m4i-flink-tasks/scripts/init 
 python init-app-search-engines.py  >> /tmp/log.out
 # this script is currently not working because the m4i_atlas_core library is not able sent https requests
-# python init-atlas-m4i-types.py
+python init-atlas-m4i-types.py
 
 # start flink jobs
 #cd /opt/flink/py_libs/m4i-flink-tasks/scripts 

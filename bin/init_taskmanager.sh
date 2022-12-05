@@ -10,5 +10,6 @@ sed "s/ELASTIC_PASSWORD/${ELASTIC_PASSWORD}/g" /opt/flink/py_libs/m4i-flink-task
 
 # instakll m4i-flink-task library
 cd /opt/flink/py_libs/m4i-flink-tasks
+git checkout -b ${M4I_FLINK_TASKS_BRANCH}
 git pull
 pip3 install -e .  >> /tmp/log.out
